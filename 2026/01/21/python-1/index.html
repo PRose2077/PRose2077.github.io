@@ -17,17 +17,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>Cdc----Test - CdcAndWzj's Blog</title>
+  <title>python的__init__文件 - CdcAndWzj's Blog</title>
 
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Cdc----Test">
-<meta property="og:url" content="http://example.com/2026/01/21/Cdc-Test/">
+    <meta name="description" content="1. __init__.py 的核心作用在 Python 中，包含 __init__.py 文件的目录被视为一个 Package（包）。  标识作用：告诉 Python 解释器这个目录不仅仅是文件夹，而是一个可导入的包。 初始化代码：当包被导入时，__init__.py 中的代码会自动执行（且仅执行一次）。   2. __all__ 详解__all__ 是一个字符串列表，用于控制 from pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的__init__文件">
+<meta property="og:url" content="http://example.com/2026/01/21/python-1/">
 <meta property="og:site_name" content="CdcAndWzj&#39;s Blog">
+<meta property="og:description" content="1. __init__.py 的核心作用在 Python 中，包含 __init__.py 文件的目录被视为一个 Package（包）。  标识作用：告诉 Python 解释器这个目录不仅仅是文件夹，而是一个可导入的包。 初始化代码：当包被导入时，__init__.py 中的代码会自动执行（且仅执行一次）。   2. __all__ 详解__all__ 是一个字符串列表，用于控制 from pac">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640">
 <meta property="article:published_time" content="2026-01-21T13:07:53.000Z">
-<meta property="article:modified_time" content="2026-01-21T13:07:53.627Z">
+<meta property="article:modified_time" content="2026-01-21T14:15:46.960Z">
 <meta property="article:author" content="CdcAndWzj">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640">
@@ -48,7 +50,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"CdcAndWzj","sameAs":[],"image":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640"},"dateCreated":"2026-01-21T21:07:53+08:00","dateModified":"2026-01-21T21:07:53+08:00","datePublished":"2026-01-21T21:07:53+08:00","description":"","headline":"Cdc----Test","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/01/21/Cdc-Test/"},"publisher":{"@type":"Organization","name":"CdcAndWzj","sameAs":[],"image":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640","logo":{"@type":"ImageObject","url":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640"}},"url":"http://example.com/2026/01/21/Cdc-Test/","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"CdcAndWzj","sameAs":[],"image":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640"},"dateCreated":"2026-01-21T21:07:53+08:00","dateModified":"2026-01-21T22:15:46+08:00","datePublished":"2026-01-21T21:07:53+08:00","description":"","headline":"python的__init__文件","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/01/21/python-1/"},"publisher":{"@type":"Organization","name":"CdcAndWzj","sameAs":[],"image":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640","logo":{"@type":"ImageObject","url":"https://q2.qlogo.cn/headimg_dl?dst_uin=511106378@qq.com&spec=640"}},"url":"http://example.com/2026/01/21/python-1/","image":[]}</script>
   
 </head>
 <body>
@@ -67,7 +69,7 @@
 
 
 
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/01/21/Cdc-Test/"><span class="title">Cdc----Test</span></a><a class="item title" href="/2026/01/21/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/01/21/python-1/"><span class="title">python的__init__文件</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -80,18 +82,53 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-01-21T13:07:53.000Z">2026-01-21</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-21T13:07:53.627Z">2026-01-21</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-01-21T13:07:53.000Z">2026-01-21</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-21T14:15:46.960Z">2026-01-21</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>Cdc----Test</span></h1>
+        <h1 class="text title"><span>python的__init__文件</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"></article>
+  </div><article class="md-text content"><h2 id="1-init-py-的核心作用"><a href="#1-init-py-的核心作用" class="headerlink" title="1. __init__.py 的核心作用"></a>1. <code>__init__.py</code> 的核心作用</h2><p>在 Python 中，包含 <code>__init__.py</code> 文件的目录被视为一个 <strong>Package（包）</strong>。</p>
+<ul>
+<li><strong>标识作用</strong>：告诉 Python 解释器这个目录不仅仅是文件夹，而是一个可导入的包。</li>
+<li><strong>初始化代码</strong>：当包被导入时，<code>__init__.py</code> 中的代码会自动执行（且仅执行一次）。</li>
+</ul>
+<hr>
+<h2 id="2-all-详解"><a href="#2-all-详解" class="headerlink" title="2. __all__ 详解"></a>2. <code>__all__</code> 详解</h2><p><code>__all__</code> 是一个字符串列表，用于控制 <code>from package import *</code> 的行为。</p>
+<ul>
+<li><strong>作用</strong>：当你使用 <code>from package import *</code> 时，只有在 <code>__all__</code> 列表中列出的变量、函数或类会被导入到当前的命名空间。</li>
+<li><strong>最佳实践</strong>：如果不定义 <code>__all__</code>，默认会导入模块中所有不以下划线 <code>_</code> 开头的名称。显式定义 <code>__all__</code> 可以避免污染用户的命名空间，隐藏内部实现细节。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件：mypackage/__init__.py</span></span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">&#x27;PublicClass&#x27;</span>, <span class="string">&#x27;public_func&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PublicClass</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">public_func</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_internal_func</span>():</span><br><span class="line">    <span class="comment"># 这个函数不会被 &#x27;from mypackage import *&#x27; 导入</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-Import-功能详解：如何设计优雅的-API接口"><a href="#3-Import-功能详解：如何设计优雅的-API接口" class="headerlink" title="3. Import 功能详解：如何设计优雅的 API接口"></a>3. Import 功能详解：如何设计优雅的 API接口</h2><p><em>(参考自 Geek-Docs: How do I write good&#x2F;correct package <strong>init</strong>.py files)</em></p>
+<p><code>__init__.py</code> 最强大的功能之一是<strong>组织和简化包的导入接口</strong>。通过在 <code>__init__.py</code> 中精心设计 import 语句，可以向用户提供更友好的访问方式。</p>
+<h3 id="A-提升命名空间-Hoisting-便捷导入"><a href="#A-提升命名空间-Hoisting-便捷导入" class="headerlink" title="A. 提升命名空间 (Hoisting) &#x2F; 便捷导入"></a>A. 提升命名空间 (Hoisting) &#x2F; 便捷导入</h3><p>通常，我们的代码逻辑分散在包内的不同子模块中。如果不处理，用户导入时需要写很长的路径。我们可以在 <code>__init__.py</code> 中将核心类或函数导入，使其对外暴露在包的顶层。</p>
+<p><strong>场景假设：</strong><br>目录结构如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mypackage/</span><br><span class="line">    ├── __init__.py</span><br><span class="line">    ├── database.py  &lt;-- 里面定义了 Database 类</span><br><span class="line">    └── network.py   &lt;-- 里面定义了 Connect 函数</span><br></pre></td></tr></table></figure>
+
+<p><strong>不好的体验（如果不配置 <code>__init__.py</code>）：</strong><br>用户必须这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mypackage.database</span><br><span class="line"><span class="keyword">import</span> mypackage.network</span><br><span class="line"></span><br><span class="line">db = mypackage.database.Database()</span><br><span class="line">conn = mypackage.network.Connect()</span><br></pre></td></tr></table></figure>
+
+<p><strong>优雅的体验（在 <code>__init__.py</code> 中配置）：</strong></p>
+<p>在 <code>mypackage/__init__.py</code> 中写入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用相对导入，将子模块的内容引入到当前包的命名空间</span></span><br><span class="line"><span class="keyword">from</span> .database <span class="keyword">import</span> Database</span><br><span class="line"><span class="keyword">from</span> .network <span class="keyword">import</span> Connect</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配合 __all__ 使用，明确导出的接口</span></span><br><span class="line">__all__ = [<span class="string">&#x27;Database&#x27;</span>, <span class="string">&#x27;Connect&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>用户现在可以这样写：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mypackage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接通过包名访问，无需知道内部文件结构</span></span><br><span class="line">db = mypackage.Database()</span><br><span class="line">conn = mypackage.Connect()</span><br></pre></td></tr></table></figure>
+
+<h3 id="B-区分“接口”与“实现”"><a href="#B-区分“接口”与“实现”" class="headerlink" title="B. 区分“接口”与“实现”"></a>B. 区分“接口”与“实现”</h3><p>通过在 <code>__init__.py</code> 中控制 import，你可以重构内部文件的结构（例如把一个大文件拆分成五个小文件），但只要 <code>__init__.py</code> 暴露的接口不变，使用你代码的用户就不需要修改任何代码。</p>
+<h3 id="C-处理包级别的初始化"><a href="#C-处理包级别的初始化" class="headerlink" title="C. 处理包级别的初始化"></a>C. 处理包级别的初始化</h3><p>你可以在 <code>__init__.py</code> 中导入必要的依赖或设置全局配置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mypackage/__init__.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查环境变量配置</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.getenv(<span class="string">&quot;API_KEY&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Warning: API_KEY not set&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露核心类</span></span><br><span class="line"><span class="keyword">from</span> .core <span class="keyword">import</span> MainService</span><br></pre></td></tr></table></figure>
+
+</article>
 <div class="article-footer">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
@@ -102,7 +139,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/01/21/hello-world/">Hello World</a></div></section></div>
+
 
 
 
@@ -112,7 +149,12 @@
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">CdcAndWzj</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-init-py-%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-text">1. __init__.py 的核心作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-all-%E8%AF%A6%E8%A7%A3"><span class="toc-text">2. __all__ 详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Import-%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%BC%98%E9%9B%85%E7%9A%84-API%E6%8E%A5%E5%8F%A3"><span class="toc-text">3. Import 功能详解：如何设计优雅的 API接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%8F%90%E5%8D%87%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Hoisting-%E4%BE%BF%E6%8D%B7%E5%AF%BC%E5%85%A5"><span class="toc-text">A. 提升命名空间 (Hoisting) &#x2F; 便捷导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%8C%BA%E5%88%86%E2%80%9C%E6%8E%A5%E5%8F%A3%E2%80%9D%E4%B8%8E%E2%80%9C%E5%AE%9E%E7%8E%B0%E2%80%9D"><span class="toc-text">B. 区分“接口”与“实现”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%A4%84%E7%90%86%E5%8C%85%E7%BA%A7%E5%88%AB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">C. 处理包级别的初始化</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
