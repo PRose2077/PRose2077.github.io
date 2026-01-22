@@ -17,12 +17,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>标签：经验分享 - Love Code（爱扣)</title>
+  <title>标签：Spark - Love Code（爱扣)</title>
 
   
     <meta property="og:type" content="website">
 <meta property="og:title" content="Love Code（爱扣)">
-<meta property="og:url" content="https://prose2077.github.io/tags/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">
+<meta property="og:url" content="https://prose2077.github.io/tags/Spark/">
 <meta property="og:site_name" content="Love Code（爱扣)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png">
@@ -75,11 +75,12 @@
 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a class="active" href="/tags/">标签：经验分享</a><a href="/archives/">归档</a></nav></div></div></div>
-<div class="post-list post"><a class="post-card post" href="/2026/01/22/vscode_and_python/">
-<article class="md-text"><h2 class="post-title">VS Code 遇到的 No module named 问题</h2><div class="excerpt"><p>VS Code 这个“万金油”是我非常喜欢的编辑器，然而在用它写 Python 项目时，经常会出现 ModuleNotFoundError: No module named &#39;xxx&#39; 的情况。
-这里的 xxx 一般是自己写的模块（第三方库通常已在 Python 默认路径中）。出现这个问题，通常是因为 Python 解释器不知道去哪里找你写的代码。
-问题场景假设你的项目目录结...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2026-01-22T03:50:15.502Z">2026-01-22</time></span></div></article>
+<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a class="active" href="/tags/">标签：Spark</a><a href="/archives/">归档</a></nav></div></div></div>
+<div class="post-list post"><a class="post-card post" href="/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/">
+<article class="md-text"><h2 class="post-title">spark学习杂记</h2><div class="excerpt"><p>Spark的核心概念1.RDD–&gt;Spark的核心基石RDD 的全称是 Resilient Distributed Dataset，中文是“弹性分布式数据集”。我们把它拆开来看：
+
+Dataset (数据集)：它就是一个集合，里面存放着你的数据。
+Distributed (分布式)：这个数据集不是存放在一台机器上，而是被切分成很多小块（称为“分区”），分散存储在集群的多台机器上。这样做...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2026-01-22T13:07:25.000Z">2026-01-22</time></span></div></article>
 </a></div>
 
 
