@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 8.1.1">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,22 +17,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>标签：SQL - Love Code（爱扣)</title>
+  <title>vscode_copilot接第三方api - Love Code（爱扣)</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Love Code（爱扣)">
-<meta property="og:url" content="https://prose2077.github.io/tags/SQL/">
+    <meta name="description" content="详细介绍如何在VS Code Copilot中接入第三方OpenAI兼容API提供商，无需插件或端口转发的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode_copilot接第三方api">
+<meta property="og:url" content="https://prose2077.github.io/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/">
 <meta property="og:site_name" content="Love Code（爱扣)">
+<meta property="og:description" content="详细介绍如何在VS Code Copilot中接入第三方OpenAI兼容API提供商，无需插件或端口转发的方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png">
+<meta property="article:published_time" content="2026-01-23T03:08:31.000Z">
+<meta property="article:modified_time" content="2026-01-23T06:54:05.225Z">
 <meta property="article:author" content="我们">
+<meta property="article:tag" content="copilot">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="开发工具">
+<meta property="article:tag" content="第三方API">
+<meta property="article:tag" content="经验分享">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png">
   
   
   
-  
+  <meta name="keywords" content="VS Code, Copilot, 第三方API, OpenAI兼容, 开发工具">
 
   <!-- feed -->
   
@@ -46,12 +55,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://prose2077.github.io","author":{"@type":"Person","name":"我们","sameAs":[],"image":"https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png"},"name":"Love Code（爱扣)","description":"","url":"https://prose2077.github.io"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"我们","sameAs":[],"image":"https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png"},"dateCreated":"2026-01-23T11:08:31+08:00","dateModified":"2026-01-23T14:54:05+08:00","datePublished":"2026-01-23T11:08:31+08:00","description":"","headline":"vscode_copilot接第三方api","mainEntityOfPage":{"@type":"WebPage","@id":"https://prose2077.github.io/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/"},"publisher":{"@type":"Organization","name":"我们","sameAs":[],"image":"https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png","logo":{"@type":"ImageObject","url":"https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png"}},"url":"https://prose2077.github.io/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/","keywords":"经验分享, vscode, copilot, 第三方API, 开发工具","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Love Code（爱扣)</div></a></div></header>
@@ -63,31 +72,134 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/"><span class="title">vscode_copilot接第三方api</span></a><a class="item title" href="/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/"><span class="title">spark学习杂记</span></a><a class="item title" href="/2026/01/22/vscode_and_python/"><span class="title">VS Code 遇到的 No module named 问题</span></a><a class="item title" href="/2026/01/21/python-1/"><span class="title">python的__init__文件</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://free.picui.cn/free/2026/01/22/6971f83dc1c04.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Love Code（爱扣)</div></a></div></header>
-
- 
 
 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a class="active" href="/tags/">标签：SQL</a><a href="/archives/">归档</a></nav></div></div></div>
-<div class="post-list post"><a class="post-card post" href="/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/">
-<article class="md-text"><h2 class="post-title">spark学习杂记</h2><div class="excerpt"><p>Spark的核心概念1.RDD–&gt;Spark的核心基石RDD 的全称是 Resilient Distributed Dataset，中文是“弹性分布式数据集”。我们把它拆开来看：
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VS-Code/">VS Code</a></div>
+<div class="flex-row" id="post-meta"><a class="author" href="/author/cdc/">Chen Dongcheng (Cdc)</a><span class="sep"></span><span class="text created"><time datetime="2026-01-23T03:08:31.000Z">2026-01-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-01-23T06:54:05.225Z">2026-01-23</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>vscode_copilot接第三方api</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="VS-Code-Copilot接入第三方API的指南（仅限聊天功能）"><a href="#VS-Code-Copilot接入第三方API的指南（仅限聊天功能）" class="headerlink" title="VS Code Copilot接入第三方API的指南（仅限聊天功能）"></a>VS Code Copilot接入第三方API的指南（仅限聊天功能）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我是一个VS Code深度使用者，Java、Python都在VS Code上编写，甚至这篇博客也是在VS Code上编写的。前段时间Copilot开源，但只有预览版的Copilot提供接入OpenAI兼容的提供商，这使得一些便宜的中转站无法直接接入Copilot，需要使用一些特殊手段。</p>
+<h2 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案"></a>常见的解决方案</h2><p>在探索Copilot接入第三方API的过程中，常见的解决方案包括：</p>
+<h3 id="1-使用插件"><a href="#1-使用插件" class="headerlink" title="1. 使用插件"></a>1. 使用插件</h3><ul>
+<li><strong>OAI Compatible Provider for Copilot</strong> 插件</li>
+<li>优点：安装简单，配置方便</li>
+<li>缺点：依赖第三方插件，可能存在兼容性问题</li>
+</ul>
+<h3 id="2-端口转发"><a href="#2-端口转发" class="headerlink" title="2. 端口转发"></a>2. 端口转发</h3><ul>
+<li>直接接管Ollama端口进行转发</li>
+<li>优点：直接控制流量</li>
+<li>缺点：配置复杂，需要网络知识</li>
+</ul>
+<h2 id="新的解决方案"><a href="#新的解决方案" class="headerlink" title="新的解决方案"></a>新的解决方案</h2><p>在查看Copilot的一个issue时，我发现了一个新的方法，<strong>不需要插件也不用接管端口</strong>，只需要修改Copilot插件的一个文件。但记得要把Copilot的自动更新关掉，否则更新后会覆盖修改。</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="步骤1：定位Copilot插件目录"><a href="#步骤1：定位Copilot插件目录" class="headerlink" title="步骤1：定位Copilot插件目录"></a>步骤1：定位Copilot插件目录</h4><p>首先需要找到VS Code中Copilot插件的安装目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows系统</span></span><br><span class="line">%USERPROFILE%\.vscode\extensions\github.copilot-*</span><br><span class="line"></span><br><span class="line"><span class="comment"># macOS/Linux系统</span></span><br><span class="line">~/.vscode/extensions/github.copilot-*</span><br></pre></td></tr></table></figure>
 
-Dataset (数据集)：它就是一个集合，里面存放着你的数据。
-Distributed (分布式)：这个数据集不是存放在一台机器上，而是被切分成很多小块（称为“分区”），分散存储在集群的多台机器上。这样做...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2026-01-22T13:07:25.000Z">2026-01-22</time></span></div></article>
-</a></div>
+<h4 id="步骤2：修改配置文件"><a href="#步骤2：修改配置文件" class="headerlink" title="步骤2：修改配置文件"></a>步骤2：修改配置文件</h4><p>这里拿github.copilot-chat-0.35.2举例<br>找到github.copilot-chat-0.35.2&#x2F;下的package.json<br>并编辑：</p>
+<ol>
+<li><strong>修改 <code>package.json</code></strong>：<br>定位到 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;when&quot;</span><span class="punctuation">:</span> <span class="string">&quot;productQualityType != &#x27;stable&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+<img src="/images/copilot%E8%A6%81%E5%88%A0%E7%9A%84%E8%A1%8C.png" alt="图片" title="copilot要删的行"><br>这一行直接删掉</li>
+</ol>
+<h4 id="步骤4：禁用自动更新"><a href="#步骤4：禁用自动更新" class="headerlink" title="步骤4：禁用自动更新"></a>步骤4：禁用自动更新</h4><p>为了防止VS Code自动更新插件覆盖你的修改：</p>
+<ol>
+<li>打开VS Code设置（<code>Ctrl+shift+x</code>）</li>
+<li>搜索”copilot”</li>
+<li>取消扩展的自动更新<br><img src="/images/%E7%A6%81%E7%94%A8%E6%9B%B4%E6%96%B0.png" alt="图片" title="禁用更新"></li>
+</ol>
+<h4 id="步骤5：重启VS-Code"><a href="#步骤5：重启VS-Code" class="headerlink" title="步骤5：重启VS Code"></a>步骤5：重启VS Code</h4><p>修改完成后，需要完全重启VS Code使更改生效。</p>
+<h2 id="配置第三方-API-提供商"><a href="#配置第三方-API-提供商" class="headerlink" title="配置第三方 API 提供商"></a>配置第三方 API 提供商</h2><ol>
+<li><p><strong>进入模型管理</strong>：<br>打开 VS Code Copilot 聊天面板（快捷键 <code>Ctrl + Shift + I</code>）。点击底部的 <strong>Auto</strong>（其实是模型选择按钮）并选择 **管理模型 **。</p>
+</li>
+<li><p><strong>确认提供商</strong>：<br>在模型列表中检查是否出现了 <strong>OpenAI Compatible</strong> 选项。若未出现，请核对之前的步骤（如 <code>package.json</code> 修改是否生效、插件版本是否匹配、VS Code 是否已完全重启等）。</p>
+</li>
+<li><p><strong>添加自定义模型</strong>：<br>右键点击 <strong>OpenAI Compatible</strong>，选择 <strong>管理 (Manage)</strong> -&gt; <strong>配置模型 (Configure Models)</strong>，即可开始添加第三方模型。</p>
+</li>
+</ol>
+<p><img src="/images/%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86.png" alt="图片" title="右键管理"><br><img src="/images/%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9E%8B.png" alt="图片" title="添加模型"></p>
+<h3 id="API-密钥配置"><a href="#API-密钥配置" class="headerlink" title="API 密钥配置"></a>API 密钥配置</h3><p>添加模型后，它们不会立即显示在语言模型界面中。请执行以下操作：</p>
+<ol>
+<li>再次右键点击 <strong>OpenAI Compatible</strong> 并选择 <strong>管理 (Manage)</strong>。</li>
+<li>选择 <strong>管理 API 密钥 (Manage API Key)</strong>，填入对应模型的 API Key。</li>
+<li><strong>重新加载窗口</strong>（执行 <code>Developer: Reload Window</code> 命令）或重启 VS Code，新模型即可生效并显示在列表中。</li>
+</ol>
+</article>
+<div class="article-footer">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body">
+        <ul>
+        <li class="post-title">
+          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yanZstar/article/details/155948122">无需任何拓展Copilot接入第三方OpenAI接口教程</a></p>
+
+        </li>
+        
+        <li class="post-title">
+          <p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-copilot-release/issues/7518#issuecomment-3043670968">Add custom OpenAI endpoint configuration (Base URL &amp; Model Parameter) of copilot chat settings</a></p>
+
+        </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文由Chen Dongcheng (Cdc)编写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/">spark学习杂记</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="PRose2077/blog-comment" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </section>
+  </div>
+
 
 
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">我们</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VS-Code-Copilot%E6%8E%A5%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9API%E7%9A%84%E6%8C%87%E5%8D%97%EF%BC%88%E4%BB%85%E9%99%90%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD%EF%BC%89"><span class="toc-text">VS Code Copilot接入第三方API的指南（仅限聊天功能）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">常见的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-text">1. 使用插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="toc-text">2. 端口转发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">新的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%AE%9A%E4%BD%8DCopilot%E6%8F%92%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-text">步骤1：定位Copilot插件目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">步骤2：修改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-text">步骤4：禁用自动更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A45%EF%BC%9A%E9%87%8D%E5%90%AFVS-Code"><span class="toc-text">步骤5：重启VS Code</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AC%AC%E4%B8%89%E6%96%B9-API-%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-text">配置第三方 API 提供商</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API-%E5%AF%86%E9%92%A5%E9%85%8D%E7%BD%AE"><span class="toc-text">API 密钥配置</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -581,6 +693,31 @@ Distributed (分布式)：这个数据集不是存放在一台机器上，而是
 
 
 <!-- optional -->
+
+  <script type="module">
+  const el = document.querySelector('#comments #beaudar');
+  util.viewportLazyload(el, load_beaudar, false);
+
+  function load_beaudar() {
+    if (!el) return;
+    try {
+      el.innerHTML = '';
+    } catch (error) {
+      console.error(error);
+    }
+    const script = document.createElement('script');
+    script.src = 'https://beaudar.lipk.org/client.js';
+    script.async = true;
+    for (const key of Object.keys(el.attributes)) {
+      const attr = el.attributes[key];
+      if (['class', 'id'].includes(attr.name) === false) {
+        script.setAttribute(attr.name, attr.value);
+      }
+    }
+    el.appendChild(script);
+  }
+</script>
+
 
 
 

@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>vscode_copilot接第三方api</title>
+      <link href="/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/"/>
+      <url>/2026/01/23/vscode-copilot%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9api/</url>
+      
+        <content type="html"><![CDATA[<h1 id="VS-Code-Copilot接入第三方API的指南（仅限聊天功能）"><a href="#VS-Code-Copilot接入第三方API的指南（仅限聊天功能）" class="headerlink" title="VS Code Copilot接入第三方API的指南（仅限聊天功能）"></a>VS Code Copilot接入第三方API的指南（仅限聊天功能）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我是一个VS Code深度使用者，Java、Python都在VS Code上编写，甚至这篇博客也是在VS Code上编写的。前段时间Copilot开源，但只有预览版的Copilot提供接入OpenAI兼容的提供商，这使得一些便宜的中转站无法直接接入Copilot，需要使用一些特殊手段。</p><h2 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案"></a>常见的解决方案</h2><p>在探索Copilot接入第三方API的过程中，常见的解决方案包括：</p><h3 id="1-使用插件"><a href="#1-使用插件" class="headerlink" title="1. 使用插件"></a>1. 使用插件</h3><ul><li><strong>OAI Compatible Provider for Copilot</strong> 插件</li><li>优点：安装简单，配置方便</li><li>缺点：依赖第三方插件，可能存在兼容性问题</li></ul><h3 id="2-端口转发"><a href="#2-端口转发" class="headerlink" title="2. 端口转发"></a>2. 端口转发</h3><ul><li>直接接管Ollama端口进行转发</li><li>优点：直接控制流量</li><li>缺点：配置复杂，需要网络知识</li></ul><h2 id="新的解决方案"><a href="#新的解决方案" class="headerlink" title="新的解决方案"></a>新的解决方案</h2><p>在查看Copilot的一个issue时，我发现了一个新的方法，<strong>不需要插件也不用接管端口</strong>，只需要修改Copilot插件的一个文件。但记得要把Copilot的自动更新关掉，否则更新后会覆盖修改。</p><h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="步骤1：定位Copilot插件目录"><a href="#步骤1：定位Copilot插件目录" class="headerlink" title="步骤1：定位Copilot插件目录"></a>步骤1：定位Copilot插件目录</h4><p>首先需要找到VS Code中Copilot插件的安装目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows系统</span></span><br><span class="line">%USERPROFILE%\.vscode\extensions\github.copilot-*</span><br><span class="line"></span><br><span class="line"><span class="comment"># macOS/Linux系统</span></span><br><span class="line">~/.vscode/extensions/github.copilot-*</span><br></pre></td></tr></table></figure><h4 id="步骤2：修改配置文件"><a href="#步骤2：修改配置文件" class="headerlink" title="步骤2：修改配置文件"></a>步骤2：修改配置文件</h4><p>这里拿github.copilot-chat-0.35.2举例<br>找到github.copilot-chat-0.35.2&#x2F;下的package.json<br>并编辑：</p><ol><li><strong>修改 <code>package.json</code></strong>：<br>定位到 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;when&quot;</span><span class="punctuation">:</span> <span class="string">&quot;productQualityType != &#x27;stable&#x27;&quot;</span></span><br></pre></td></tr></table></figure><img src="/images/copilot%E8%A6%81%E5%88%A0%E7%9A%84%E8%A1%8C.png" alt="图片" title="copilot要删的行"><br>这一行直接删掉</li></ol><h4 id="步骤4：禁用自动更新"><a href="#步骤4：禁用自动更新" class="headerlink" title="步骤4：禁用自动更新"></a>步骤4：禁用自动更新</h4><p>为了防止VS Code自动更新插件覆盖你的修改：</p><ol><li>打开VS Code设置（<code>Ctrl+shift+x</code>）</li><li>搜索”copilot”</li><li>取消扩展的自动更新<br><img src="/images/%E7%A6%81%E7%94%A8%E6%9B%B4%E6%96%B0.png" alt="图片" title="禁用更新"></li></ol><h4 id="步骤5：重启VS-Code"><a href="#步骤5：重启VS-Code" class="headerlink" title="步骤5：重启VS Code"></a>步骤5：重启VS Code</h4><p>修改完成后，需要完全重启VS Code使更改生效。</p><h2 id="配置第三方-API-提供商"><a href="#配置第三方-API-提供商" class="headerlink" title="配置第三方 API 提供商"></a>配置第三方 API 提供商</h2><ol><li><p><strong>进入模型管理</strong>：<br>打开 VS Code Copilot 聊天面板（快捷键 <code>Ctrl + Shift + I</code>）。点击底部的 <strong>Auto</strong>（其实是模型选择按钮）并选择 **管理模型 **。</p></li><li><p><strong>确认提供商</strong>：<br>在模型列表中检查是否出现了 <strong>OpenAI Compatible</strong> 选项。若未出现，请核对之前的步骤（如 <code>package.json</code> 修改是否生效、插件版本是否匹配、VS Code 是否已完全重启等）。</p></li><li><p><strong>添加自定义模型</strong>：<br>右键点击 <strong>OpenAI Compatible</strong>，选择 <strong>管理 (Manage)</strong> -&gt; <strong>配置模型 (Configure Models)</strong>，即可开始添加第三方模型。</p></li></ol><p><img src="/images/%E5%8F%B3%E9%94%AE%E7%AE%A1%E7%90%86.png" alt="图片" title="右键管理"><br><img src="/images/%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9E%8B.png" alt="图片" title="添加模型"></p><h3 id="API-密钥配置"><a href="#API-密钥配置" class="headerlink" title="API 密钥配置"></a>API 密钥配置</h3><p>添加模型后，它们不会立即显示在语言模型界面中。请执行以下操作：</p><ol><li>再次右键点击 <strong>OpenAI Compatible</strong> 并选择 <strong>管理 (Manage)</strong>。</li><li>选择 <strong>管理 API 密钥 (Manage API Key)</strong>，填入对应模型的 API Key。</li><li><strong>重新加载窗口</strong>（执行 <code>Developer: Reload Window</code> 命令）或重启 VS Code，新模型即可生效并显示在列表中。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发工具 </category>
+          
+          <category> VS Code </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 经验分享 </tag>
+            
+            <tag> vscode </tag>
+            
+            <tag> copilot </tag>
+            
+            <tag> 第三方API </tag>
+            
+            <tag> 开发工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>spark学习杂记</title>
       <link href="/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/"/>
       <url>/2026/01/22/spark%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/</url>
@@ -41,9 +76,9 @@
             
             <tag> Python </tag>
             
-            <tag> vscode </tag>
-            
             <tag> 经验分享 </tag>
+            
+            <tag> vscode </tag>
             
         </tags>
       
